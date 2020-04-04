@@ -5,7 +5,9 @@ data(us_contagious_diseases)
 
 #lets have a glimpse 
 glimpse(us_contagious_diseases)
-#First we want to calculate the death rate. Some states did not have reported the data consistently if we look at the weeks_reporting variable. So we also adjust the rate accordingly 
+#First we want to calculate the death rate. 
+#Some states did not have reported the data consistently if we look at the weeks_reporting variable. 
+#So we also adjust the rate accordingly 
 dat <- us_contagious_diseases %>%
   filter(year == 1967 & disease=="Measles" & !is.na(population)) %>%
   mutate(rate = count / population * 10000 * 52 / weeks_reporting) %>% 
